@@ -1,21 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import Create from './components/create/create';
-import Readdata from './components/Read/read';
+import "./App.css";
+import Create from "./components/create/create";
+import Readdata from "./components/Read/read";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-   
-   <div>
-          <Create />
-
-
-        </div>
-        <div>
-          <Readdata />
-        </div>
+      <Create />
+      <Readdata />
     </div>
   );
 }

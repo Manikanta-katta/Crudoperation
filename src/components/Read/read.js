@@ -6,22 +6,27 @@ import "C:/Users/ManikantaKatta/Desktop/crudoperation/src/components/Read/read.c
 const Readdata = () => {
   const [data, setdata] = useState([]);
   const fetchurl =
-    "https://crudcrud.com/api/3ffb366cad60472d9a03c033f08f841e/users";
+    "https://crudcrud.com/api/1fa25d9ef9f547e895f27eaaf400374f/users";
 
   const getData = () => fetch(fetchurl).then((res) => res.json());
 
   useEffect(() => {
-    getData().then((data) => setdata(data));
+    getData()
+      .then((data) => setdata(data))
+      .then(() => {});
   }, []);
 
   const onDelete = (id) => {
+
     axios
       .delete(
-        `https://crudcrud.com/api/3ffb366cad60472d9a03c033f08f841e/users/${id}`
+        `https://crudcrud.com/api/1fa25d9ef9f547e895f27eaaf400374f/${id}`
       )
       .then(() => {
         getData();
       });
+    // window.location.reload(false);
+ 
   };
   return (
     <div className="card">
@@ -38,7 +43,7 @@ const Readdata = () => {
         </thead>
         <tbody>
           {data?.map((item, i) => (
-            <tr key={i}>
+            <tr className="trow" id="t-row"key={i}>
               <td id="td">{item.firstname}</td>
               <td id="td">{item.lastname}</td>
               <td id="td">{item.collegename}</td>
@@ -46,6 +51,7 @@ const Readdata = () => {
 
               <td>
                 <button
+                  id="delete"
                   className="card-2 bg-warning"
                   onClick={() => onDelete(item._id)}
                 >
